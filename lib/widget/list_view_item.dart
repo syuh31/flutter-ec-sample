@@ -24,11 +24,12 @@ class ListViewItemWidget extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
-              SizedBox(
-                width: 140,
-                height: 180,
-                child: Placeholder(),
-              ),
+              // SizedBox(
+              //   width: 140,
+              //   height: 180,
+              //   child: Placeholder(),
+              // ),
+              Image.asset(item.iconImageUrl, width: 140, height: 180,),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),

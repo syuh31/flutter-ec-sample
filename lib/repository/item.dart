@@ -18,7 +18,13 @@ class LocalItemRepository implements ItemRepository {
       ItemEntity(
         name:
             'very long name item very long name item very long name item very long name item very long name item very long name item very long name item very long name item very long name item very long name item',
-        imageUrls: [],
+        iconImageUrl: 'assets/image/1280x800.jpg',
+        imageUrls: [
+          'assets/image/800x1280.jpg',
+          'assets/image/1280x800.jpg',
+          'assets/image/1440x1920.jpg',
+          'assets/image/1920x1440.jpg',
+        ],
         rate: 4,
         price: 12000,
         pointPercent: 1,
@@ -26,7 +32,13 @@ class LocalItemRepository implements ItemRepository {
       ),
       ItemEntity(
         name: 'item2',
-        imageUrls: [],
+        iconImageUrl: 'assets/image/800x1280.jpg',
+        imageUrls: [
+          'assets/image/800x1280.jpg',
+          'assets/image/1280x800.jpg',
+          'assets/image/1440x1920.jpg',
+          'assets/image/1920x1440.jpg',
+        ],
         rate: 3.5,
         price: 2000,
         pointPercent: 1,
@@ -38,7 +50,13 @@ class LocalItemRepository implements ItemRepository {
       ItemEntity(
         name:
             'very long name item very long name item very long name item very long name item very long name item very long name item very long name item very long name item very long name item very long name item',
-        imageUrls: [],
+        iconImageUrl: 'assets/image/1280x800.jpg',
+        imageUrls: [
+          'assets/image/800x1280.jpg',
+          'assets/image/1280x800.jpg',
+          'assets/image/1440x1920.jpg',
+          'assets/image/1920x1440.jpg',
+        ],
         rate: 4,
         price: 12000,
         pointPercent: 1,
@@ -46,7 +64,13 @@ class LocalItemRepository implements ItemRepository {
       ),
       ItemEntity(
         name: 'item2',
-        imageUrls: [],
+        iconImageUrl: 'assets/image/800x1280.jpg',
+        imageUrls: [
+          'assets/image/800x1280.jpg',
+          'assets/image/1280x800.jpg',
+          'assets/image/1440x1920.jpg',
+          'assets/image/1920x1440.jpg',
+        ],
         rate: 3.5,
         price: 2000,
         pointPercent: 1,

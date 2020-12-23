@@ -4,6 +4,7 @@ import 'package:uuid/uuid.dart';
 class Item {
   String id;
   String name;
+  String iconImageUrl;
   List<String> imageUrls;
   double rate;
   int price;
@@ -13,6 +14,7 @@ class Item {
   Item({
     String id,
     this.name,
+    this.iconImageUrl,
     this.imageUrls,
     this.rate,
     this.price,
@@ -23,6 +25,7 @@ class Item {
   ItemEntity toEntity() {
     return ItemEntity(
       name: name,
+      iconImageUrl: iconImageUrl,
       imageUrls: imageUrls,
       rate: rate,
       price: price,
@@ -34,6 +37,7 @@ class Item {
   static Item fromEntity(ItemEntity entity) {
     return Item(
       name: entity.name,
+      iconImageUrl: entity.iconImageUrl,
       imageUrls: entity.imageUrls,
       rate: entity.rate,
       price: entity.price,

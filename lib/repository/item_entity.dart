@@ -1,5 +1,6 @@
 class ItemEntity {
   String name;
+  String iconImageUrl;
   List<String> imageUrls;
   double rate;
   int price;
@@ -8,6 +9,7 @@ class ItemEntity {
 
   ItemEntity({
     this.name,
+    this.iconImageUrl,
     this.imageUrls,
     this.rate,
     this.price,
