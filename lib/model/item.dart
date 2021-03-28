@@ -12,14 +12,14 @@ class Item {
   bool isPrime;
 
   Item({
-    String id,
-    this.name,
-    this.iconImageUrl,
-    this.imageUrls,
-    this.rate,
-    this.price,
-    this.pointPercent,
-    this.isPrime,
+    String? id,
+    required this.name,
+    required this.iconImageUrl,
+    required this.imageUrls,
+    required this.rate,
+    required this.price,
+    required this.pointPercent,
+    required this.isPrime,
   }) : id = id ?? Uuid().v4();
 
   ItemEntity toEntity() {

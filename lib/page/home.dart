@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_ec_sample/model/item_manager.dart';
 import 'package:flutter_ec_sample/page/item_detail.dart';
 import 'package:flutter_ec_sample/widget/list_view_item.dart';
-import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {

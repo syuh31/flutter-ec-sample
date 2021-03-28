@@ -46,7 +46,7 @@ class _RootPageState extends State<RootPage> {
   Widget build(BuildContext context) {
     return WillPopScope(
       onWillPop: () async {
-        final currentNavigatorState = _navigatorKeys[_currentTab].currentState;
+        final currentNavigatorState = _navigatorKeys[_currentTab]!.currentState;
         if (currentNavigatorState == null) {
           if (_currentTab == _rootTab) {
             return true;
@@ -79,7 +79,7 @@ class _RootPageState extends State<RootPage> {
         Offstage(
           offstage: _currentTab != TabKind.home,
           child: TabNavigator(
-            navigatorKey: _navigatorKeys[TabKind.home],
+            navigatorKey: _navigatorKeys[TabKind.home]!,
             tabKind: TabKind.home,
             home: HomePage(),
           ),
@@ -87,7 +87,7 @@ class _RootPageState extends State<RootPage> {
         Offstage(
           offstage: _currentTab != TabKind.user,
           child: TabNavigator(
-            navigatorKey: _navigatorKeys[TabKind.user],
+            navigatorKey: _navigatorKeys[TabKind.user]!,
             tabKind: TabKind.user,
             home: Text('user'),
           ),
@@ -95,7 +95,7 @@ class _RootPageState extends State<RootPage> {
         Offstage(
           offstage: _currentTab != TabKind.cart,
           child: TabNavigator(
-            navigatorKey: _navigatorKeys[TabKind.cart],
+            navigatorKey: _navigatorKeys[TabKind.cart]!,
             tabKind: TabKind.cart,
             home: CartPage(),
           ),
@@ -103,7 +103,7 @@ class _RootPageState extends State<RootPage> {
         Offstage(
           offstage: _currentTab != TabKind.setting,
           child: TabNavigator(
-            navigatorKey: _navigatorKeys[TabKind.setting],
+            navigatorKey: _navigatorKeys[TabKind.setting]!,
             tabKind: TabKind.setting,
             home: Text('setting'),
           ),
@@ -127,7 +127,7 @@ class _RootPageState extends State<RootPage> {
           AnimatedPositioned(
             duration: Duration(milliseconds: 300),
             curve: Curves.decelerate,
-            left: borderSpaceWidth * tabIndexes[_currentTab] +
+            left: borderSpaceWidth * tabIndexes[_currentTab]! +
                 borderSpaceWidth / 2 -
                 borderWidth / 2,
             child: Container(
@@ -138,7 +138,7 @@ class _RootPageState extends State<RootPage> {
                   borderRadius: BorderRadius.only(
                       bottomRight: Radius.circular(3),
                       bottomLeft: Radius.circular(3)),
-                  border: Border.all(color: color)),
+                  border: Border.all(color: color!)),
             ),
           ),
           Row(
@@ -186,15 +186,15 @@ class _RootPageState extends State<RootPage> {
 
   Widget buildCartIcon(BuildContext context) {
     return CartIcon(
-      color: _currentTab == TabKind.cart ? null : Colors.grey,
+      color: (_currentTab == TabKind.cart) ? null : Colors.grey,
       count: context.select((UserManager userMgr) => userMgr.cartItems.length),
     );
   }
 
   Widget buildBottomBarItem(
     BuildContext context, {
-    Widget icon,
-    TabKind newTab,
+    required Widget icon,
+    required TabKind newTab,
   }) {
     const bottomBarHeight = 45.0;
 

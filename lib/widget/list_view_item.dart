@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ec_sample/model/item.dart';
-import 'package:flutter_ec_sample/page/item_detail.dart';
 import 'package:intl/intl.dart';
 
+@immutable
 class ListViewItemWidget extends StatelessWidget {
-  ListViewItemWidget(this.item, {this.onTap});
+  ListViewItemWidget(this.item, {required this.onTap});
 
-  Item item;
-  void Function() onTap;
+  final Item item;
+  final void Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +60,7 @@ class ListViewItemWidget extends StatelessWidget {
   }
 
   Widget buildRateStar(double rate) {
-    List<Widget> stars = [];
+    var stars = [];
     for (; 0 < rate; rate--) {
       if (1 <= rate) {
         stars.add(Icon(Icons.star));
@@ -69,7 +69,7 @@ class ListViewItemWidget extends StatelessWidget {
       }
     }
 
-    for (int i = 0; i < 5 - stars.length; i++) {
+    for (var i = 0; i < 5 - stars.length; i++) {
       stars.add(Icon(Icons.star_border));
     }
 

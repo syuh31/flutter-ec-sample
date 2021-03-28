@@ -7,11 +7,11 @@ class TabNavigatorRoutes {
 }
 
 class TabNavigator extends StatelessWidget {
-  TabNavigator({this.navigatorKey, this.tabKind, this.home, this.routes});
+  TabNavigator({required this.navigatorKey, required this.tabKind, this.home, this.routes});
   final GlobalKey<NavigatorState> navigatorKey;
   final TabKind tabKind;
-  final Widget home;
-  final Map<String, WidgetBuilder> routes;
+  final Widget? home;
+  final Map<String, WidgetBuilder>? routes;
 
   @override
   Widget build(BuildContext context) {
@@ -19,9 +19,9 @@ class TabNavigator extends StatelessWidget {
       key: navigatorKey,
       initialRoute: Navigator.defaultRouteName,
       onGenerateRoute: (routeSettings) {
-        final WidgetBuilder pageContentBuilder = home != null
-            ? (BuildContext context) => home
-            : routes[routeSettings.name];
+        final pageContentBuilder = home != null
+            ? (BuildContext context) => home!
+            : routes![routeSettings.name]!;
 
         return MaterialPageRoute(builder: pageContentBuilder);
       },

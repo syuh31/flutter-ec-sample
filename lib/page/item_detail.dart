@@ -14,41 +14,46 @@ class ItemDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(item.name),
-        leading: new IconButton(
-          icon: new Icon(Icons.arrow_back),
-          onPressed: () => Navigator.of(context).pop(),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(item.name),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () => Navigator.of(context).pop(),
+          ),
         ),
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.all(16),
-              child: AspectRatio(
-                aspectRatio: 1.2,
-                child: Carousel(
+        body: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: AspectRatio(
                   aspectRatio: 1.2,
-                    itemBuilder: (context, index) =>
-                        images[index % images.length]),
+                  child: Carousel(
+                      aspectRatio: 1.2,
+                      itemBuilder: (context, index) =>
+                          images[index % images.length]),
+                ),
               ),
-            ),
-            Container(
-              color: Colors.green,
-              width: double.infinity,
-              child: InteractiveViewer(
-                maxScale: 10,
-                  child: Image.asset(item.imageUrls[0], fit: BoxFit.scaleDown,)),
-            ),
-            RaisedButton(
-              child: Text('カートに入れる'),
-              onPressed: () {
-                context.read<UserManager>().addItemToCart(item);
-              },
-            ),
-          ],
+              Container(
+                color: Colors.green,
+                width: double.infinity,
+                child: InteractiveViewer(
+                    maxScale: 10,
+                    child: Image.asset(
+                      item.imageUrls[0],
+                      fit: BoxFit.scaleDown,
+                    )),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  context.read<UserManager>().addItemToCart(item);
+                },
+                child: Text('カートに入れる'),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -59,25 +64,28 @@ class Carousel extends StatefulWidget {
   final IndexedWidgetBuilder itemBuilder;
   final double aspectRatio;
 
-  const Carousel({Key key, @required this.aspectRatio, @required this.itemBuilder});
+  const Carousel({
+    required this.aspectRatio,
+    required this.itemBuilder,
+  });
 
   @override
   _CarouselState createState() => _CarouselState();
 }
 
 class _CarouselState extends State<Carousel> {
-  PageController _controller;
+  final PageController _controller;
   int _currentPage;
   bool _pageHasChanged = false;
+
+  _CarouselState() : _currentPage = 0, _controller = PageController(
+    viewportFraction: .85,
+    initialPage: 0,
+  );
 
   @override
   void initState() {
     super.initState();
-    _currentPage = 0;
-    _controller = PageController(
-      viewportFraction: .85,
-      initialPage: _currentPage,
-    );
   }
 
   @override
@@ -101,12 +109,14 @@ class _CarouselState extends State<Carousel> {
         animation: _controller,
         builder: (context, child) {
           var result = _pageHasChanged ? _controller.page : _currentPage * 1.0;
-          var value = result - index;
-          value = (1 - (value.abs() * .5)).clamp(0.0, 1.0) as double;
+          var value = result! - index;
+          value = (1 - (value.abs() * .5)).clamp(0.0, 1.0);
 
           return Center(
             child: SizedBox(
-              height: Curves.easeOut.transform(value) * size.width / widget.aspectRatio,
+              height: Curves.easeOut.transform(value) *
+                  size.width /
+                  widget.aspectRatio,
               width: Curves.easeOut.transform(value) * size.width,
               child: child,
             ),

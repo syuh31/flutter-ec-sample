@@ -5,7 +5,7 @@ import 'package:flutter_ec_sample/repository/item.dart';
 class ItemManager extends ChangeNotifier {
   ItemManager(this._itemRepository);
 
-  ItemRepository _itemRepository;
+  final ItemRepository _itemRepository;
 
   dynamic error;
   List<Item> _items = [];

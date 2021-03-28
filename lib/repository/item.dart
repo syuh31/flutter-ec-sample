@@ -13,7 +13,7 @@ class LocalItemRepository implements ItemRepository {
   List<ItemEntity> items;
   List<ItemEntity> cartItems;
 
-  LocalItemRepository() {
+  LocalItemRepository() :
     items = [
       ItemEntity(
         name:
@@ -44,8 +44,7 @@ class LocalItemRepository implements ItemRepository {
         pointPercent: 1,
         isPrime: true,
       ),
-    ];
-
+    ],
     cartItems = [
       ItemEntity(
         name:
@@ -77,7 +76,6 @@ class LocalItemRepository implements ItemRepository {
         isPrime: true,
       ),
     ];
-  }
 
   @override
   Future<List<ItemEntity>> fetchItems() {

@@ -8,12 +8,12 @@ class ItemEntity {
   bool isPrime;
 
   ItemEntity({
-    this.name,
-    this.iconImageUrl,
-    this.imageUrls,
-    this.rate,
-    this.price,
-    this.pointPercent,
-    this.isPrime,
+    required this.name,
+    required this.iconImageUrl,
+    required this.imageUrls,
+    required this.rate,
+    required this.price,
+    required this.pointPercent,
+    required this.isPrime,
   });
 }
